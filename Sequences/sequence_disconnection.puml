@@ -1,5 +1,0 @@
-@startuml
-participant "Utilisateur" as usr
-participant "Autre\nutilisateurs connéctés" as cousr
-[<-  usr : disconnect
-@enduml
