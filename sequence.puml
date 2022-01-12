@@ -1,7 +1,0 @@
-@startuml
-loop
-    "Station météorologique" -> "Station météorologique" : collecte les données
-    "Station météorologique" -> Serveur : envoie les données
-    Serveur  -> Serveur  : Stock les données
-end
-@enduml
