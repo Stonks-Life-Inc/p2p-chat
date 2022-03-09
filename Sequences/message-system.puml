@@ -1,6 +1,6 @@
 @startuml
 participant "Utilisateur" as usr
-participant "Autre\nutilisateurs connéctés" as cousr
+participant "Chat System" as cousr
 
 group sending a message
     usr -> cousr : sendMsg
