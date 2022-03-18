@@ -26,15 +26,15 @@ public class UDPWriter {
                 // Preparation of the message to send, in this case, a simple date
                 String time = new Date(0).toString();
                 // Decomposition of the string variable time in their corresponding bytes.
-                byte b[]=time.getBytes();
+                byte b[] = time.getBytes();
 
                 // Funny number
-                dpac = new DatagramPacket(b,b.length,InetAddress.getByName("localhost"), 69);
+                dpac = new DatagramPacket(b, b.length, InetAddress.getByName("localhost"), 69);
 
                 // The packet is send though the socket.
                 dsoc.send(dpac);
             }
-        }  catch (IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             // Exceptions to be handle
             System.out.println(e);
         }
