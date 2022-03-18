@@ -1,7 +1,7 @@
-package app;
+package src.app;
 
-import GUI.ConnectionCredentialsForm;
-import GUI.DisconnectConfirmation;
+import src.GUI.ConectionCredentialsForm;
+import src.GUI.disconnectConfirmation;
 
 public class P2PChatSystem {
     public static void main(String[] args) {
