@@ -13,7 +13,7 @@ public class UDPReader {
         // Funny number
         DatagramSocket dsoc = new DatagramSocket(69);
 
-        byte [] b= new byte[64];
+        byte[] b = new byte[64];
         String data = "no data";
 
         try {
