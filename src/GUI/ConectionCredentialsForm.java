@@ -8,6 +8,7 @@ public class ConectionCredentialsForm extends JDialog {
     private JButton buttonOK;
     private JButton buttonCancel;
     private JTextField credentials_input;
+    private JSpinner portSpinner;
 
     public ConectionCredentialsForm() {
         setContentPane(contentPane);
