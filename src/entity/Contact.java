@@ -1,5 +1,4 @@
-//package p2pChat;
-
+package src.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +7,7 @@ import java.util.Scanner;
 
 
 public class Contact implements Comparable<Contact> {
+    public static List<Contact> Contacts;
     private String name;
     private int ipAdress;
     

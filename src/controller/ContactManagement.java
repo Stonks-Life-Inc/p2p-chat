@@ -1,7 +1,7 @@
+package src.controller;
 
-package ContactManagement;
+import src.entity.Contact;
 
-import static ContactManagement.Contact.scan;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -70,7 +70,9 @@ public class ContactManagement {
         int ipAdress;
        
        System.out.println("Enter user name :");
-       name=scan.nextInt();
+       name=scan.nextLine();
+       System.out.println("Enter user ipAdress :");
+       ipAdress=scan.nextInt();
    
        Contact contact=new Contact(name, ipAdress);
        

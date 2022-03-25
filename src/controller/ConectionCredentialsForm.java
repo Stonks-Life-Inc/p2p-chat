@@ -1,14 +1,16 @@
-package GUI;
+package src.controller;
 
 import javax.swing.*;
 import java.awt.event.*;
 
-public class disconnectConfirmation extends JDialog {
+public class ConectionCredentialsForm extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JTextField credentials_input;
+    private JSpinner portSpinner;
 
-    public disconnectConfirmation() {
+    public ConectionCredentialsForm() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -42,14 +44,19 @@ public class disconnectConfirmation extends JDialog {
     }
 
     public static void main(String[] args) {
-        disconnectConfirmation dialog = new disconnectConfirmation();
+        ConectionCredentialsForm dialog = new ConectionCredentialsForm();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
     }
 
     private void onOK() {
-        // add your code here
+        // TODO: send username
+        // get the username entered by the user
+        // send it to the main controller
+
+        String credentials = credentials_input.getText();
+
         dispose();
     }
 
