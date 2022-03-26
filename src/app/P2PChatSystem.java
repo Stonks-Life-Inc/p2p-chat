@@ -1,11 +1,13 @@
 package src.app;
 
-import src.GUI.*;
+import src.controller.MainWindow;
 
 public class P2PChatSystem {
 
+    boolean isConnected;
+
     public static void main(String[] args) {
-        GUI.MainWindow mainwindow =  new GUI.MainWindow();
+        MainWindow mainwindow =  new MainWindow();
 
     }
 }
