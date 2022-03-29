@@ -1,4 +1,4 @@
-package network.tcp;
+package src.network.tcp;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

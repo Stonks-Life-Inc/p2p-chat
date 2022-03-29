@@ -1,6 +1,6 @@
 package src.app;
 
-import src.controller.MainWindow;
+import src.GUI.MainWindow;
 import src.network.ClientThread;
 import src.network.ListenerThread;
 import src.network.ServerThread;
