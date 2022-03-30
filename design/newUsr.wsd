@@ -1,0 +1,12 @@
+@startuml
+participant "User" as usr
+participant "MainWindow" as main
+participant "HelloThread" as helloT
+participant "_GLOBAL" as global
+
+usr -> main : clicks on user in list
+main -> main : retrieve index of user
+main -> helloT : getUsrs
+main -> main : getUserAtIndex
+main -> global : setSelectedUserInfo
+@enduml

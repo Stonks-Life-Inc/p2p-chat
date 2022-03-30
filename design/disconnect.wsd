@@ -1,0 +1,25 @@
+@startuml
+participant "user" as usr
+participant "MainWindow" as main
+participant "DisconnectDialog" as disconnect
+participant "ByeThread" as bt
+participant "_GLOBAL" as global
+participant "Distant user" as du
+participant "ThreadController" as tc
+
+usr -> main : clicks on disconnect
+main -> disconnect : init new dialog
+disconnect -> usr : displayed
+usr -> disconnect : confirm disconnection
+disconnect -> bt : init new thread
+bt -> global : get bye port
+bt -> bt : new udp packet on 
+bt -> du : send bye packet
+
+bt -> tc : stop all threads
+
+bt -> tc : updateView
+tc -> main : updateView
+
+
+@enduml

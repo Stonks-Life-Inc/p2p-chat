@@ -1,0 +1,13 @@
+@startuml
+participant "Distant user" as distUsr
+participant "ReceiverThread" as rt
+participant "ThreadController" as global
+participant "MainWindow" as main
+
+rt -> rt : listening on port for new message
+distUsr -> rt : registration of a new message
+rt -> rt : decompiling messages
+rt -> global : updateNewMessage
+global -> main : update view
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+participant "Distant User" as usr
+participant "HelloThread" as helloT
+participant "_GLOBAL" as global
+participant "ThreadController" as tc
+participant "MainWindow" as main
+
+[-> usr : sendsHelloBroadcast
+usr -> helloT : recieveHelloMsg
+helloT -> helloT : add new user to \n connected user ArrayList
+helloT -> usr : respondBack
+helloT -> global : register new information
+helloT -> tc : updateUserList
+tc -> main : update user list (JList)
+@enduml

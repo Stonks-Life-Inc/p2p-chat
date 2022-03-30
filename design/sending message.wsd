@@ -1,0 +1,14 @@
+@startuml
+participant "User" as usr
+participant "MainWindow" as main
+participant "SenderThread" as st
+participant "_GLOBAL" as global
+participant "Distant user" as distUsr
+
+usr -> main : enter a message and \n clicks on send
+main -> st : new instance
+st -> global : getMessagePort
+st -> st : create a new udp socket \n for the message
+st -> main : getTextInput text
+st -> distUsr : send packet
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+participant "User" as usr
+participant "MainWindow" as main
+participant "LoginDialog" as login
+participant "_GLOBAL" as global
+participant "HelloThread" as helloT
+participant "RecieverThread" as recieverT
+participant "Other connected users" as cousr
+
+[-> usr : starts the app
+usr -> main : click on connectButton
+main -> login : show the login dialog
+login -> usr : displayed
+usr -> login : enter the username
+usr -> login : click on the connect button
+login -> login : create a new local user
+login -> global : register new user \n and user information
+login -> helloT : init new hello thread
+login -> recieverT : init a new reciever thread
+recieverT -> recieverT : start a new thread \n to listen to predefined port
+helloT -> helloT : Init a new Hello object
+helloT -> helloT : start a new udp network socket
+loop for n user connected
+helloT -> cousr : send a hello message
+end
+@enduml
