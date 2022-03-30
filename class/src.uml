@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>src</OriginalElement>
+  <nodes>
+    <node x="87.8170731707317" y="2126.0">src.entity.Bye</node>
+    <node x="844.8028455284554" y="154.0">src.network.RecieverThread</node>
+    <node x="245.8170731707317" y="2060.0">src.network.HelloThread</node>
+    <node x="795.8170731707316" y="1294.0">src.controller.Connect</node>
+    <node x="555.8170731707318" y="1250.0">src.network.SenderThread</node>
+    <node x="356.9817073170734" y="546.0">src.app._GLOBAL</node>
+    <node x="0.0" y="1700.0">src.entity.Hello</node>
+    <node x="735.219512195122" y="2126.0">src.app.P2PChatSystem</node>
+    <node x="371.8170731707317" y="1305.0">src.controller.Disconnect</node>
+    <node x="165.0670731707317" y="0.0">src.controller.MainWindow</node>
+    <node x="626.969512195122" y="1590.0">src.controller.ThreadController</node>
+    <node x="135.8170731707317" y="2364.0">src.network.ByeThread</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="src.controller.Disconnect" target="src.app._GLOBAL" relationship="DEPENDENCY">
+      <point x="0.0" y="-83.0" />
+      <point x="453.8170731707317" y="1223.0" />
+      <point x="485.9817073170734" y="1223.0" />
+      <point x="0.0" y="325.0" />
+    </edge>
+    <edge source="src.controller.Connect" target="src.network.RecieverThread" relationship="CREATE">
+      <point x="41.0" y="-94.0" />
+      <point x="918.8170731707316" y="1223.0" />
+      <point x="1059.7916666666667" y="1223.0" />
+      <point x="1059.7916666666667" y="525.0" />
+      <point x="1065.0416666666667" y="525.0" />
+      <point x="1065.0416666666667" y="495.0" />
+      <point x="1033.969512195122" y="495.0" />
+      <point x="75.66666666666669" y="83.0" />
+    </edge>
+    <edge source="src.network.HelloThread" target="src.controller.ThreadController" relationship="DEPENDENCY">
+      <point x="60.0" y="-127.0" />
+      <point x="425.8170731707317" y="2039.0" />
+      <point x="544.9512195121954" y="2039.0" />
+      <point x="544.9512195121954" y="2019.0" />
+      <point x="682.969512195122" y="2019.0" />
+      <point x="-112.0" y="204.0" />
+    </edge>
+    <edge source="src.controller.ThreadController" target="src.network.HelloThread" relationship="DEPENDENCY">
+      <point x="-112.0" y="204.0" />
+      <point x="682.969512195122" y="2019.0" />
+      <point x="544.9512195121954" y="2019.0" />
+      <point x="544.9512195121954" y="2039.0" />
+      <point x="425.8170731707317" y="2039.0" />
+      <point x="60.0" y="-127.0" />
+    </edge>
+    <edge source="src.controller.ThreadController" target="src.controller.Connect" relationship="TO_ONE">
+      <point x="0.0" y="-204.0" />
+      <point x="794.969512195122" y="1568.0" />
+      <point x="835.219512195122" y="1568.0" />
+      <point x="835.219512195122" y="1548.0" />
+      <point x="918.8170731707316" y="1548.0" />
+      <point x="41.0" y="94.0" />
+    </edge>
+    <edge source="src.app._GLOBAL" target="src.network.RecieverThread" relationship="DEPENDENCY">
+      <point x="-64.5" y="-325.0" />
+      <point x="421.4817073170734" y="515.0" />
+      <point x="882.6361788617887" y="515.0" />
+      <point x="-75.66666666666667" y="83.0" />
+    </edge>
+    <edge source="src.app.P2PChatSystem" target="src.controller.ThreadController" relationship="TO_ONE">
+      <point x="40.25" y="-61.0" />
+      <point x="855.969512195122" y="2039.0" />
+      <point x="906.969512195122" y="2039.0" />
+      <point x="112.0" y="204.0" />
+    </edge>
+    <edge source="src.controller.Connect" target="src.controller.ThreadController" relationship="DEPENDENCY">
+      <point x="-41.0" y="94.0" />
+      <point x="836.8170731707316" y="1558.0" />
+      <point x="444.9817073170734" y="1558.0" />
+      <point x="444.9817073170734" y="1568.0" />
+      <point x="682.969512195122" y="1568.0" />
+      <point x="-112.0" y="-204.0" />
+    </edge>
+    <edge source="src.controller.ThreadController" target="src.controller.Connect" relationship="DEPENDENCY">
+      <point x="-112.0" y="-204.0" />
+      <point x="682.969512195122" y="1568.0" />
+      <point x="444.9817073170734" y="1568.0" />
+      <point x="444.9817073170734" y="1558.0" />
+      <point x="836.8170731707316" y="1558.0" />
+      <point x="-41.0" y="94.0" />
+    </edge>
+    <edge source="src.network.HelloThread" target="src.entity.Hello" relationship="CREATE">
+      <point x="-60.0" y="-127.0" />
+      <point x="305.8170731707317" y="2039.0" />
+      <point x="90.0" y="2039.0" />
+      <point x="0.0" y="94.0" />
+    </edge>
+    <edge source="src.app._GLOBAL" target="src.controller.MainWindow" relationship="TO_ONE">
+      <point x="64.5" y="-325.0" />
+      <point x="550.4817073170734" y="525.0" />
+      <point x="1049.2916666666667" y="525.0" />
+      <point x="1049.2916666666667" y="505.0" />
+      <point x="970.3170731707316" y="505.0" />
+      <point x="970.3170731707316" y="495.0" />
+      <point x="388.40040650406496" y="495.0" />
+      <point x="89.33333333333326" y="237.0" />
+    </edge>
+    <edge source="src.app.P2PChatSystem" target="src.controller.ThreadController" relationship="CREATE">
+      <point x="-40.25" y="-61.0" />
+      <point x="775.469512195122" y="2039.0" />
+      <point x="837.3262195121953" y="2039.0" />
+      <point x="837.3262195121953" y="2029.0" />
+      <point x="794.969512195122" y="2029.0" />
+      <point x="0.0" y="204.0" />
+    </edge>
+    <edge source="src.controller.ThreadController" target="src.controller.MainWindow" relationship="TO_ONE">
+      <point x="0.0" y="-204.0" />
+      <point x="794.969512195122" y="1568.0" />
+      <point x="835.219512195122" y="1568.0" />
+      <point x="835.219512195122" y="1548.0" />
+      <point x="970.3170731707316" y="1548.0" />
+      <point x="970.3170731707316" y="495.0" />
+      <point x="388.40040650406496" y="495.0" />
+      <point x="89.33333333333326" y="237.0" />
+    </edge>
+    <edge source="src.app.P2PChatSystem" target="src.controller.MainWindow" relationship="CREATE">
+      <point x="-40.25" y="-61.0" />
+      <point x="775.469512195122" y="2039.0" />
+      <point x="837.3262195121953" y="2039.0" />
+      <point x="837.3262195121953" y="2029.0" />
+      <point x="211.96951219512198" y="2029.0" />
+      <point x="211.96951219512198" y="525.0" />
+      <point x="209.7337398373984" y="525.0" />
+      <point x="-89.33333333333331" y="237.0" />
+    </edge>
+    <edge source="src.controller.ThreadController" target="src.controller.Disconnect" relationship="DEPENDENCY">
+      <point x="-112.0" y="-204.0" />
+      <point x="682.969512195122" y="1568.0" />
+      <point x="444.9817073170734" y="1568.0" />
+      <point x="444.9817073170734" y="1558.0" />
+      <point x="412.8170731707317" y="1558.0" />
+      <point x="-41.0" y="83.0" />
+    </edge>
+    <edge source="src.network.SenderThread" target="src.app._GLOBAL" relationship="DEPENDENCY">
+      <point x="0.0" y="-138.0" />
+      <point x="665.8170731707318" y="1223.0" />
+      <point x="485.9817073170734" y="1223.0" />
+      <point x="0.0" y="325.0" />
+    </edge>
+    <edge source="src.network.HelloThread" target="src.app._GLOBAL" relationship="DEPENDENCY">
+      <point x="60.0" y="-127.0" />
+      <point x="425.8170731707317" y="2039.0" />
+      <point x="544.9512195121954" y="2039.0" />
+      <point x="544.9512195121954" y="2019.0" />
+      <point x="328.0670731707317" y="2019.0" />
+      <point x="328.0670731707317" y="1223.0" />
+      <point x="485.9817073170734" y="1223.0" />
+      <point x="0.0" y="325.0" />
+    </edge>
+    <edge source="src.controller.ThreadController" target="src.controller.Disconnect" relationship="TO_ONE">
+      <point x="0.0" y="-204.0" />
+      <point x="794.969512195122" y="1568.0" />
+      <point x="835.219512195122" y="1568.0" />
+      <point x="835.219512195122" y="1548.0" />
+      <point x="494.8170731707317" y="1548.0" />
+      <point x="41.0" y="83.0" />
+    </edge>
+    <edge source="src.controller.ThreadController" target="src.controller.MainWindow" relationship="DEPENDENCY">
+      <point x="-112.0" y="-204.0" />
+      <point x="682.969512195122" y="1568.0" />
+      <point x="444.9817073170734" y="1568.0" />
+      <point x="444.9817073170734" y="1558.0" />
+      <point x="222.96951219512198" y="1558.0" />
+      <point x="222.96951219512198" y="495.0" />
+      <point x="299.0670731707317" y="495.0" />
+      <point x="0.0" y="237.0" />
+    </edge>
+    <edge source="src.app._GLOBAL" target="src.controller.MainWindow" relationship="DEPENDENCY">
+      <point x="-64.5" y="-325.0" />
+      <point x="421.4817073170734" y="505.0" />
+      <point x="222.96951219512198" y="505.0" />
+      <point x="222.96951219512198" y="495.0" />
+      <point x="299.0670731707317" y="495.0" />
+      <point x="0.0" y="237.0" />
+    </edge>
+    <edge source="src.app._GLOBAL" target="src.network.RecieverThread" relationship="TO_ONE">
+      <point x="64.5" y="-325.0" />
+      <point x="550.4817073170734" y="525.0" />
+      <point x="1049.2916666666667" y="525.0" />
+      <point x="1049.2916666666667" y="515.0" />
+      <point x="958.3028455284554" y="515.0" />
+      <point x="1.4210854715202004E-14" y="83.0" />
+    </edge>
+    <edge source="src.network.ByeThread" target="src.network.HelloThread" relationship="DEPENDENCY">
+      <point x="0.0" y="-138.0" />
+      <point x="261.3170731707317" y="2339.0" />
+      <point x="365.8170731707317" y="2339.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="src.network.RecieverThread" target="src.controller.ThreadController" relationship="CREATE">
+      <point x="75.66666666666669" y="83.0" />
+      <point x="1033.969512195122" y="495.0" />
+      <point x="1065.0416666666667" y="495.0" />
+      <point x="1065.0416666666667" y="525.0" />
+      <point x="1070.2916666666667" y="525.0" />
+      <point x="1070.2916666666667" y="1568.0" />
+      <point x="906.969512195122" y="1568.0" />
+      <point x="112.00000000000003" y="-204.0" />
+    </edge>
+    <edge source="src.controller.ThreadController" target="src.app._GLOBAL" relationship="DEPENDENCY">
+      <point x="-112.0" y="-204.0" />
+      <point x="682.969512195122" y="1568.0" />
+      <point x="444.9817073170734" y="1568.0" />
+      <point x="444.9817073170734" y="1558.0" />
+      <point x="361.3170731707317" y="1558.0" />
+      <point x="361.3170731707317" y="1223.0" />
+      <point x="485.9817073170734" y="1223.0" />
+      <point x="0.0" y="325.0" />
+    </edge>
+    <edge source="src.network.ByeThread" target="src.entity.Bye" relationship="DEPENDENCY">
+      <point x="0.0" y="-138.0" />
+      <point x="261.3170731707317" y="2339.0" />
+      <point x="156.8170731707317" y="2339.0" />
+      <point x="0.0" y="61.0" />
+    </edge>
+    <edge source="src.controller.Connect" target="src.app._GLOBAL" relationship="DEPENDENCY">
+      <point x="-41.0" y="-94.0" />
+      <point x="836.8170731707316" y="1223.0" />
+      <point x="485.9817073170734" y="1223.0" />
+      <point x="0.0" y="325.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.6977443609022557" showDependencies="true" x="903.0553117314637" y="462.23599137931035" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
