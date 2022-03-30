@@ -1,5 +1,7 @@
 package src.network;
 
+import src.app._GLOBAL;
+import src.controller.ThreadController;
 import src.entity.Contact.User;
 import src.entity.Hello;
 
@@ -72,7 +74,7 @@ public class HelloThread extends Thread {
                 try {
                     udpClientSocket = new DatagramSocket();
                     InetAddress ia = InetAddress.getByName(String.valueOf(helloResponse.getUsr().getIpAdress()));
-                    udpClientSocket.connect(ia, 7778);
+                    udpClientSocket.connect(ia, _GLOBAL.getHelloPort());
 
                     // Create an Hello Request
                     Hello helloMessage = new Hello(getCurrUsr(), false);
@@ -85,7 +87,7 @@ public class HelloThread extends Thread {
                     byte [] sendData = bos.toByteArray();
 
                     // Create the UPD Packet
-                    DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ia, 7778);
+                    DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ia, _GLOBAL.getHelloPort());
 
                     // Send the UDP packet to the sender of the previous Hello Request
                     udpClientSocket.send(sendPacket);
@@ -95,6 +97,7 @@ public class HelloThread extends Thread {
             }
             // The thread is not doing anything particularly important and
             // if any other threads/processes need to be run, they should run
+            ThreadController.updateUserList();
             Thread.yield();
         }
     }

@@ -5,6 +5,7 @@ import src.app._GLOBAL;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 public class Disconnect extends JDialog {
     private JPanel contentPane;
@@ -18,7 +19,11 @@ public class Disconnect extends JDialog {
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onOK();
+                try {
+                    onOK();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -48,9 +53,17 @@ public class Disconnect extends JDialog {
         setVisible(true);
     }
 
-    private void onOK() {
+    private void onOK() throws IOException {
         // add your code here
         _GLOBAL.setConnected(false);
+
+        //We disconnect
+        _GLOBAL.getLocalUser().bye();
+
+        //  We update our user state in the Thread Controller.
+        // This will change our view accordingly.
+        ThreadController.updateUserState();
+
         dispose();
     }
 

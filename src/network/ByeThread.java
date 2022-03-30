@@ -58,7 +58,7 @@ public class ByeThread extends Thread {
             }
             // If the user was connected and now disconnected, we add this User to the ArrayList
             if(isInsideList) {
-                HelloThread.users.add(byeResponse.getUsr());
+                HelloThread.users.remove(byeResponse.getUsr());
                 System.out.println("BYE FROM : " + byeResponse.getUsr().toString() + "\n");
             }
             // The thread is not doing anything particularly important and

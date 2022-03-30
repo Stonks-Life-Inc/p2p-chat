@@ -62,21 +62,24 @@ public class Connect extends JDialog {
 
     private void onOK() throws IOException {
 
-
-        //P2PChatSystem.setPort(Integer.parseInt(spinner1.getValue().toString()));
-
+        // We set our global vars
         _GLOBAL.setUsername(textField1.getText());
         _GLOBAL.setConnected(true);
+
 
         // Init the hello class and launch a hello broadcast message
         // Retrieve the list of user who have responded to the broadcast
         // Comunicate this list to the main to add each user to the list of connected user
         User usr = new User(textField1.getText());
+        _GLOBAL.setLocalUser(usr);
+
         InetAddress ip = InetAddress.getByName("192.168.1.255");
         usr.hello(ip, _GLOBAL.getHelloPort());
 
         // We need to create the reciever to register the broadcast responses from other distant user
-        RecieverThread reciever = new RecieverThread(new DatagramSocket(_GLOBAL.getClientPort()));
+        RecieverThread reciever = new RecieverThread(new DatagramSocket(_GLOBAL.getMsgPort()));
+        reciever.start();
+        ThreadController.updateUserState();
 
         dispose();
     }

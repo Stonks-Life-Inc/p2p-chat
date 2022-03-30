@@ -19,15 +19,18 @@ public class RecieverThread extends Thread {
 
     @Override
     public void run() {
+        System.out.println("RecieverThread started");
         byte[] buffer = new byte[1024];
         ThreadController tc = new ThreadController();
         while(true) {
             DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
             try {
                 socket.receive(packet);
-                msg = new String(buffer, 0, socket.getReceiveBufferSize());
+                msg = new String(packet.getData(), 0, packet.getLength());
+                System.out.println("Recieved: " + msg);
 
                 ThreadController.updateNewMsg(msg);
+                //ThreadController.updateUserList();
 
                 Thread.yield();
             } catch (SocketException e) {

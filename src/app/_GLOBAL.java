@@ -1,6 +1,7 @@
 package src.app;
 
 import src.controller.MainWindow;
+import src.entity.Contact.User;
 
 public class _GLOBAL {
     // Set by default.
@@ -9,7 +10,6 @@ public class _GLOBAL {
     private static int msgPort = 5555;
     private static int helloPort = 5556;
     private static int goodbyePort = 5557;
-    private static int clientPort = 5558;
 
     // Some information  about the current user
     private static boolean isConnected;
@@ -19,6 +19,7 @@ public class _GLOBAL {
 
     // Current information about the distance user which we are connected with.
     private static String currRemoteUsrIP;
+    private static src.entity.Contact.User localUser;
 
     public static int getMsgPort() {
         return msgPort;
@@ -30,10 +31,6 @@ public class _GLOBAL {
 
     public static int getGoodbyePort() {
         return goodbyePort;
-    }
-
-    public static int getClientPort() {
-        return clientPort;
     }
 
     // Getters & Setters for the local user variables
@@ -76,5 +73,13 @@ public class _GLOBAL {
 
     public static void setCurrRemoteUsrIP(String currRemoteUsrIPArg) {
         currRemoteUsrIP = currRemoteUsrIPArg;
+    }
+
+    public static User getLocalUser() {
+        return localUser;
+    }
+
+    public static void setLocalUser(User localUser) {
+        _GLOBAL.localUser = localUser;
     }
 }

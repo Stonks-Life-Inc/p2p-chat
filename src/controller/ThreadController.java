@@ -3,6 +3,7 @@ package src.controller;
 import src.app._GLOBAL;
 import src.network.HelloThread;
 
+import javax.swing.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -37,13 +38,15 @@ public class ThreadController {
 
 
     public static void updateNewMsg(String message) {
+        System.out.println("Updating new message");
         if(!HelloThread.getUsrs().isEmpty()) {
             for(int i = 0; i < HelloThread.getUsrs().size(); i++) {
                 // Get the sender of the message
                 if(HelloThread.getUsrs().get(i).getIpAdress().equals(_GLOBAL.getCurrRemoteUsrIP())) {
                     try {
                         // Update the ChatSystem View
-                        mw.getMsgTextArea().append("FROM [" + HelloThread.getUsrs().get(i).getName() + "] : " + message + "\n");
+                        System.out.println("Message from: " + HelloThread.getUsrs().get(i).getName() + " " + message);
+                        mw.getMsgTextArea().append( HelloThread.getUsrs().get(i).getName() + " : " + message + "\n");
                     } catch (Exception e) {
 
                         e.printStackTrace();
@@ -56,7 +59,7 @@ public class ThreadController {
     }
 
     public static void updateUserState(){
-        if(_GLOBAL.isConnected()){
+        if(!_GLOBAL.isConnected()){
             mw.getSendBtn().setEnabled(false);
             mw.getMsgInputBox().setEnabled(false);
             mw.getConBtn().setText("Connect");
@@ -66,6 +69,20 @@ public class ThreadController {
             mw.getConBtn().setText("Disconnect");
         }
 
+    }
+
+    // Look at the current user connected list in the network using the HelloThread getUsrs() method
+    // Update the user list in the GUI mainWindow
+    public static void updateUserList() {
+        mw.getFriendList().removeAll();
+        DefaultListModel userList = new DefaultListModel();
+        for(int i = 0; i < HelloThread.getUsrs().size(); i++) {
+            if(HelloThread.getUsrs().get(i).getIpAdress().equals(_GLOBAL.getLocalUser().getIpAdress())) {
+                continue;
+            }
+            userList.addElement(HelloThread.getUsrs().get(i).getName());
+        }
+        mw.getFriendList().setModel(userList);
     }
 
 
