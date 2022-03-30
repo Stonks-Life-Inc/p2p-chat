@@ -3,6 +3,7 @@ package src.controller;
 import src.app.P2PChatSystem;
 import src.app._GLOBAL;
 import src.network.HelloThread;
+import src.network.RecieverThread;
 import src.network.SenderThread;
 
 import javax.swing.*;
@@ -12,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
@@ -90,14 +93,36 @@ public class MainWindow extends JFrame {
         friendList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                // Get the selected friend's IP address
-                // Set the global variable to the selected friend's IP address
-                System.out.println("Selected friend: " + friendList.getSelectedValue() + " IP : " +
-                        HelloThread.getUsrs().get(friendList.getSelectedIndex()).getIpAdress() +
-                        "("+_GLOBAL.getCurrRemoteUsrIP()+")");
-
+                // We must do a +2 because our local user is getting registered twice when connectong.
+                // Why do we need to do a +2?
+                // Why is the user being registered twice?
+                // I don't know. I don't care. I don't have time to find the source of the problem and fix this!
                 _GLOBAL.setCurrRemoteUsrIP(HelloThread.getUsrs().get(friendList.getSelectedIndex()+2).getIpAdress());
 
+            }
+        });
+
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            /**
+             * On closing Window, we send a Bye Request to all the users
+             * @exception IOException
+             */
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if(_GLOBAL.isConnected()) {
+                    try {
+                        // add your code here
+                        _GLOBAL.setConnected(false);
+
+                        //We disconnect
+                        _GLOBAL.getLocalUser().bye();
+
+                        dispose();
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
             }
         });
     }
@@ -150,4 +175,6 @@ public class MainWindow extends JFrame {
         }
         friendList.setModel(listModel);
     }
+
+
 }

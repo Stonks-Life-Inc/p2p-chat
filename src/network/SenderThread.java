@@ -23,14 +23,18 @@ public class SenderThread extends Thread {
 
     public void run() {
         try {
-
             while (true) {
-                byte[] data = msg.getBytes();
+                System.out.println("Sending message to " + remoteIp.getHostAddress() + ":" + _GLOBAL.getMsgPort());
+                if(msg != "") {
+                    byte[] data = msg.getBytes();
 
-                DatagramPacket packet = new DatagramPacket(data, data.length, remoteIp, _GLOBAL.getMsgPort());
-                socket.send(packet);
-
+                    DatagramPacket packet = new DatagramPacket(data, data.length, remoteIp, _GLOBAL.getMsgPort());
+                    socket.send(packet);
+                    msg = "";
+                }
+                //Thread.interrupted();
                 Thread.yield();
+
             }
 
         } catch (Exception e) {

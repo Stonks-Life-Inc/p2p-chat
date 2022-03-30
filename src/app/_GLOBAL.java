@@ -2,6 +2,7 @@ package src.app;
 
 import src.controller.MainWindow;
 import src.entity.Contact.User;
+import src.network.RecieverThread;
 
 public class _GLOBAL {
     // Set by default.
@@ -20,6 +21,16 @@ public class _GLOBAL {
     // Current information about the distance user which we are connected with.
     private static String currRemoteUsrIP;
     private static src.entity.Contact.User localUser;
+
+    private static RecieverThread recieverThread;
+
+    public static RecieverThread getRecieverThread() {
+        return recieverThread;
+    }
+
+    public static void setRecieverThread(RecieverThread recieverThread) {
+        _GLOBAL.recieverThread = recieverThread;
+    }
 
     public static int getMsgPort() {
         return msgPort;

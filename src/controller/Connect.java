@@ -78,6 +78,7 @@ public class Connect extends JDialog {
 
         // We need to create the reciever to register the broadcast responses from other distant user
         RecieverThread reciever = new RecieverThread(new DatagramSocket(_GLOBAL.getMsgPort()));
+        _GLOBAL.setRecieverThread(reciever);
         reciever.start();
         ThreadController.updateUserState();
 

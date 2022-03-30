@@ -60,10 +60,6 @@ public class Disconnect extends JDialog {
         //We disconnect
         _GLOBAL.getLocalUser().bye();
 
-        //  We update our user state in the Thread Controller.
-        // This will change our view accordingly.
-        ThreadController.updateUserState();
-
         dispose();
     }
 

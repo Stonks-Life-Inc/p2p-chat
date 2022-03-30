@@ -46,7 +46,7 @@ public class ThreadController {
                     try {
                         // Update the ChatSystem View
                         System.out.println("Message from: " + HelloThread.getUsrs().get(i).getName() + " " + message);
-                        mw.getMsgTextArea().append( HelloThread.getUsrs().get(i).getName() + " : " + message + "\n");
+                        mw.getMsgTextArea().append("\n" + HelloThread.getUsrs().get(i).getName() + " : " + message);
                     } catch (Exception e) {
 
                         e.printStackTrace();

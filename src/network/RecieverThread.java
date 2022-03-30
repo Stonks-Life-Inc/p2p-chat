@@ -23,6 +23,7 @@ public class RecieverThread extends Thread {
         byte[] buffer = new byte[1024];
         ThreadController tc = new ThreadController();
         while(true) {
+            ThreadController.updateUserList();
             DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
             try {
                 socket.receive(packet);
@@ -30,9 +31,9 @@ public class RecieverThread extends Thread {
                 System.out.println("Recieved: " + msg);
 
                 ThreadController.updateNewMsg(msg);
-                //ThreadController.updateUserList();
 
                 Thread.yield();
+
             } catch (SocketException e) {
                 e.printStackTrace();
             } catch (IOException e) {
