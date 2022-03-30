@@ -1,16 +1,23 @@
 package src.controller;
 
 import src.app.P2PChatSystem;
+import src.app._GLOBAL;
+import src.entity.Contact.User;
+import src.network.RecieverThread;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class Connect extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
     private JTextField textField1;
-    private JSpinner spinner1;
+    //private JSpinner spinner1;
 
     public Connect() {
         setContentPane(contentPane);
@@ -19,7 +26,11 @@ public class Connect extends JDialog {
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onOK();
+                try {
+                    onOK();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -49,11 +60,26 @@ public class Connect extends JDialog {
         setVisible(true);
     }
 
-    private void onOK() {
+    private void onOK() throws IOException {
 
-        P2PChatSystem.setPort(Integer.parseInt(spinner1.getValue().toString()));
-        P2PChatSystem.setUsername(textField1.getText());
-        P2PChatSystem.setConnected(true);
+        // We set our global vars
+        _GLOBAL.setUsername(textField1.getText());
+        _GLOBAL.setConnected(true);
+
+
+        // Init the hello class and launch a hello broadcast message
+        // Retrieve the list of user who have responded to the broadcast
+        // Comunicate this list to the main to add each user to the list of connected user
+        User usr = new User(textField1.getText());
+        _GLOBAL.setLocalUser(usr);
+
+        InetAddress ip = InetAddress.getByName("192.168.1.255");
+        usr.hello(ip, _GLOBAL.getHelloPort());
+
+        // We need to create the reciever to register the broadcast responses from other distant user
+        RecieverThread reciever = new RecieverThread(new DatagramSocket(_GLOBAL.getMsgPort()));
+        reciever.start();
+        ThreadController.updateUserState();
 
         dispose();
     }
