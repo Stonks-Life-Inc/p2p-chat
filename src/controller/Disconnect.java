@@ -1,6 +1,7 @@
 package src.controller;
 
 import src.app.P2PChatSystem;
+import src.app._GLOBAL;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -49,7 +50,7 @@ public class Disconnect extends JDialog {
 
     private void onOK() {
         // add your code here
-        P2PChatSystem.setConnected(false);
+        _GLOBAL.setConnected(false);
         dispose();
     }
 

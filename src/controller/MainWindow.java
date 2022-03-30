@@ -1,12 +1,14 @@
 package src.controller;
 
 import src.app.P2PChatSystem;
+import src.app._GLOBAL;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class MainWindow extends JFrame {
     private JPanel mainPanel;
@@ -35,7 +37,7 @@ public class MainWindow extends JFrame {
                 // Do a test to see if user is connected to the network or not
                 // If not, we want to display a new instance of the connection form window
                 // Else we want to display a new instance of the disconnection form window
-                if (!P2PChatSystem.isConnected()) {
+                if (!_GLOBAL.isConnected()) {
                     new Connect();
                 } else {
                     new Disconnect();
@@ -60,7 +62,7 @@ public class MainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Calling the send message method from ServerThread class
-                ServerThread.sendMessage(msgInputBox.getText());
+
                 msgInputBox.setText("");
                 msgTextArea.append("You: " + msgInputBox.getText() + "\n");
             }
@@ -97,5 +99,14 @@ public class MainWindow extends JFrame {
 
     public void setConBtn(JButton conBtn) {
         this.conBtn = conBtn;
+    }
+
+    // Method to update the friend list
+    public void updateConUserList(ArrayList<src.entity.Contact.User> userList) {
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        for (src.entity.Contact.User user : userList) {
+            listModel.addElement(user.getName());
+        }
+        friendList.setModel(listModel);
     }
 }
