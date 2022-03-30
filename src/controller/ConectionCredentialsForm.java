@@ -1,29 +1,23 @@
 package src.controller;
 
-import src.app.P2PChatSystem;
-import src.app._GLOBAL;
-
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.IOException;
 
-public class Disconnect extends JDialog {
+public class ConectionCredentialsForm extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JTextField credentials_input;
+    private JSpinner portSpinner;
 
-    public Disconnect() {
+    public ConectionCredentialsForm() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                try {
-                    onOK();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+                onOK();
             }
         });
 
@@ -47,22 +41,21 @@ public class Disconnect extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-
-        //Display the dialog
-        pack();
-        setVisible(true);
     }
 
-    private void onOK() throws IOException {
-        // add your code here
-        _GLOBAL.setConnected(false);
+    public static void main(String[] args) {
+        ConectionCredentialsForm dialog = new ConectionCredentialsForm();
+        dialog.pack();
+        dialog.setVisible(true);
+        System.exit(0);
+    }
 
-        //We disconnect
-        _GLOBAL.getLocalUser().bye();
+    private void onOK() {
+        // TODO: send username
+        // get the username entered by the user
+        // send it to the main controller
 
-        //  We update our user state in the Thread Controller.
-        // This will change our view accordingly.
-        ThreadController.updateUserState();
+        String credentials = credentials_input.getText();
 
         dispose();
     }

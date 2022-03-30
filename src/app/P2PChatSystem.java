@@ -1,5 +1,6 @@
 package src.app;
 
+
 import com.sun.tools.javac.Main;
 import src.controller.MainWindow;
 import src.controller.ThreadController;
@@ -19,6 +20,4 @@ public class P2PChatSystem {
         MainWindow mainWindow = tc.getMw();
 
     }
-
-
 }
