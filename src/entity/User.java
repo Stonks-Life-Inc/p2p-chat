@@ -18,7 +18,8 @@ import java.util.Objects;
 public class User implements Serializable {
     private String name;
     private String ipAdress;
-    
+
+    private static final long serialVersionUID = 8600390427182656290L;
 
     public User(String name) {
         this.name = name;
@@ -74,6 +75,7 @@ public class User implements Serializable {
     public void hello(InetAddress address, int remotePort) throws IOException {
         // Create client DatagramSocket
         DatagramSocket udpClientSocket;
+        System.out.println("Sending Hello to " + address.getHostAddress() + ":" + remotePort);
         try {
             // Create and Start the HelloThread
             HelloThread helloThread = new HelloThread(new DatagramSocket(remotePort), this);
@@ -101,6 +103,7 @@ public class User implements Serializable {
 
             // Send the UDP packet to the broadcast address
             udpClientSocket.send(sendPacket);
+            System.out.println("Hello sent to the HelloThread");
 
         } catch (SocketException e) {
             // TODO Auto-generated catch block
@@ -125,7 +128,7 @@ public class User implements Serializable {
             // Convert the Bye Request into bytes
             byte [] sendData = bos.toByteArray();
 
-            InetAddress currentIpAddress = InetAddress.getByName("192.168.1.255");
+            InetAddress currentIpAddress = InetAddress.getByName("192.168.43.255");
             udpClientSocket.setBroadcast(true);
             udpClientSocket.connect(currentIpAddress, _GLOBAL.getGoodbyePort());
 

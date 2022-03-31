@@ -73,7 +73,7 @@ public class Connect extends JDialog {
         User usr = new User(textField1.getText());
         _GLOBAL.setLocalUser(usr);
 
-        InetAddress ip = InetAddress.getByName("192.168.1.255");
+        InetAddress ip = InetAddress.getByName("192.168.43.255");
         usr.hello(ip, _GLOBAL.getHelloPort());
 
         // We need to create the reciever to register the broadcast responses from other distant user
@@ -81,6 +81,8 @@ public class Connect extends JDialog {
         _GLOBAL.setRecieverThread(reciever);
         reciever.start();
         ThreadController.updateUserState();
+
+
 
         dispose();
     }

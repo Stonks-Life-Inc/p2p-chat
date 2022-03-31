@@ -7,6 +7,8 @@ import java.util.Objects;
 
 public class Hello implements Serializable {
 
+    private static final long serialVersionUID = -7493459258056058157L;
+
     private src.entity.Contact.User usr;
     private Boolean answer;
 

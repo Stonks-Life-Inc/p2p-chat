@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 public class Bye implements Serializable {
 
+    private static final long serialVersionUID = 244800800274812133L;
+
     private src.entity.Contact.User usr;
 
     public Bye(User usr) {

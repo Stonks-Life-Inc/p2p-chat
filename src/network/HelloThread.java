@@ -28,10 +28,12 @@ public class HelloThread extends Thread {
         byte[] incomingData = new byte[1024];
 
         while (true) {
+            System.out.println("Waiting for Hello");
             // Create a UDP Packet from the incoming packet
             DatagramPacket receivePacket = new DatagramPacket(incomingData, incomingData.length);
             try {
                 socket.receive(receivePacket);
+                System.out.println("Hello received");
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -47,6 +49,7 @@ public class HelloThread extends Thread {
                 is = new ObjectInputStream(in);
                 // Get the Hello request
                 helloResponse = (Hello) is.readObject();
+                System.out.println("Hello init");
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -69,6 +72,7 @@ public class HelloThread extends Thread {
 
             // Check if an answer is needed
             if(helloResponse.getAnswer()) {
+                System.out.println("Answer needed");
                 // Create client DatagramSocket
                 DatagramSocket udpClientSocket;
                 try {
@@ -82,6 +86,7 @@ public class HelloThread extends Thread {
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
                     ObjectOutputStream oos = new ObjectOutputStream(bos);
                     oos.writeObject(helloMessage);
+                    System.out.println("Hello created");
 
                     // Convert the Hello Request into bytes
                     byte [] sendData = bos.toByteArray();
@@ -91,6 +96,7 @@ public class HelloThread extends Thread {
 
                     // Send the UDP packet to the sender of the previous Hello Request
                     udpClientSocket.send(sendPacket);
+                    System.out.println("Hello sent");
                 }	catch(IOException e) {
                     e.printStackTrace();
                 }
@@ -98,6 +104,7 @@ public class HelloThread extends Thread {
             // The thread is not doing anything particularly important and
             // if any other threads/processes need to be run, they should run
             ThreadController.updateUserList();
+            System.out.println("Hello Thread is running");
             Thread.yield();
         }
     }
